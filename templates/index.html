@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyWithSafwat - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        /* Shared layout style */
+        .content-container { margin-left: 270px; padding: 40px; transition: all 0.4s ease; }
+        .sidebar.collapsed ~ .content-container { margin-left: 85px; }
+
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .image-card { background: #151A2D; border-radius: 12px; overflow: hidden; cursor: pointer; border: 1px solid #2d354d; transition: 0.3s; }
+        .image-card:hover { transform: translateY(-5px); border-color: #EEF2FF; }
+        .image-card img { width: 100%; height: 220px; object-fit: cover; }
+        .image-card p { padding: 15px; text-align: center; color: #EEF2FF; font-weight: 500; }
+
+        /* Lightbox Styling */
+        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 85%; border-radius: 5px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; font-size: 50px; color: white; cursor: pointer; }
+
+        @media (max-width: 768px) { .content-container { margin-left: 0 !important; padding-top: 100px; } }
+    </style>
+</head>
+<body>
+    <button class="sidebar-menu-button"><span class="material-symbols-rounded">menu</span></button>
+
+    <div class="sidebar">
+        <header class="sidebar-header">
+            <a href="/" class="header-logo">
+                <img src="{{ url_for('static', filename='channels5_profile.png') }}" alt="Logo" />
+            </a>
+            <button class="sidebar-toggler"><span class="material-symbols-rounded">chevron_left</span></button>
+        </header>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list primary-nav">
+                <li class="nav-item open">
+                    <a href="/" class="nav-link">
+                        <span class="material-symbols-rounded">dashboard</span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/upload" class="nav-link">
+                        <span class="material-symbols-rounded">upload_file</span>
+                        <span class="nav-label">Upload Homework</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown-container">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        <span class="material-symbols-rounded">calendar_today</span>
+                        <span class="nav-label">Subjects</span>
+                        <span class="dropdown-icon material-symbols-rounded">keyboard_arrow_down</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item"><a href="#" class="nav-link dropdown-link">English</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link dropdown-link">EVS</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link dropdown-link">GK</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="content-container">
+    <h1>Student Homework Gallery</h1>
+    <div class="image-grid">
+        <div class="image-card" onclick="openImg('CLOUD_URL_HERE')">
+            <img src="CLOUD_URL_HERE" alt="Homework">
+            <div class="image-card-info">
+                <h3>Student Name</h3>
+                <p>Subject Name</p>
+            </div>
+        </div>
+    </div>
+</main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        function openLightbox(element) {
+            const img = document.getElementById('lightbox-img');
+            const lightbox = document.getElementById('lightbox');
+            img.src = element.querySelector('img').src;
+            lightbox.classList.add('active');
+        }
+    </script>
+</body>
+</html>

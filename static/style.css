@@ -251,10 +251,10 @@ body {
   }
 }
 
-.welcome{
+.welcome {
   margin-top: 50px;
 }
-
+/* Removed the extra } that was at the bottom */
 /* Add to style.css */
 /* --- Subject Page Layout --- */
 .content-container {
@@ -344,4 +344,5 @@ body {
     margin-left: 0 !important;
     padding: 100px 20px 20px 20px;
   }
+
 }
